@@ -30,3 +30,6 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t order-service .
+        
+              - name: Run tests
+        run: PYTHONPATH=. pytest
