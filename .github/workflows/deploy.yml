@@ -26,10 +26,14 @@ jobs:
         run: pip install -r requirements.txt pytest
 
       - name: Run tests
+        env:
+          PYTHONPATH: .
         run: pytest
 
       - name: Build Docker image
         run: docker build -t order-service .
 
       - name: Run tests (optional second run)
-        run: PYTHONPATH=. pytest
+        env:
+          PYTHONPATH: .
+        run: pytest
