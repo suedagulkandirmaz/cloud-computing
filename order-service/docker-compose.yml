@@ -1,0 +1,24 @@
+services:
+
+  order-service:
+    build: .
+    container_name: order-service
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - .:/app
+
+    restart: always
+
+  worker:
+    build: .
+    container_name: order-worker
+
+    command: python -m app.worker
+
+    volumes:
+      - .:/app
+
+    restart: always
